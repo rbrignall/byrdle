@@ -386,7 +386,14 @@ this.wordle.bundle = function(e) {
             <div class="setting">\n        <div class="text">\n          <div class="title">Color Blind Mode</div>\n          <div class="description">High contrast colors</div>\n        </div>\n        <div class="control">\n          <game-switch id="color-blind-theme" name="color-blind-theme"></game-switch>\n        </div>\n      </div>\n    \
             <div class="setting">\n        <div class="text">\n          <div class="title">Fancy Font Mode</div>\n          <div class="description">For the full choral experience</div>\n        </div>\n        <div class="control">\n          <game-switch id="fancy-font" name="fancy-font"></game-switch>\n        </div>\n      </div>\n    \
         </section>\n\n    \
-        <section>\n      <div class="setting">\n        <div class="text">\n          <div class="title">Feedback</div>\n        </div>\n        <div class="control">\n          \n          \n          <a href="https://twitter.com/intent/tweet?screen_name=rbrignall" target="blank" title="@rbrignall">Twitter</a>\n        </div>\n      </div>\n    </section>\n  </div>\n  <div id="footnote">\n    <div id="copyright">Some material copyright to <a href="https://www.powerlanguage.co.uk/wordle/">WORDLE</a> 2021-2022.</div>\n    <div>\n      <div id="puzzle-number"></div>\n      <div id="hash"></div>\n    </div>\n  </div>\n';
+        <section>\n      <div class="setting">\n        <div class="text">\n          <div class="title">Feedback</div>\n        </div>\n        <div class="control">\n          \n          \n          <a href="https://twitter.com/intent/tweet?screen_name=rbrignall" target="blank" title="@rbrignall">Twitter</a>\n        </div>\n      </div>\n    </section>\n\
+        <section>\n\
+            <div class="setting" style="border: 0px;">\n        <div class="text">\n          <div class="title">Credits</div>\n     </div></div>\
+            <div class="setting" style="border: 0px;">\n        <div class="text">\n          Codebase and copyright: Josh Wardle\n        </div>\n    \
+                <div class="control"><a href="mailto:wordle@powerlanguage.co.uk?subject=Feedback" title="wordle@powerlanguage.co.uk">Email</a> | <a href="https://twitter.com/intent/tweet?screen_name=powerlanguish" target="blank" title="@powerlanguish">Twitter</a></div>\n      </div>\n\
+            <div class="setting">\n        <div class="text">\n          Parody idea: QuireMemes\n        </div>\n        <div class="control">\n          \n          \n         <a href="https://www.facebook.com/quirememes">Facebook</a> | <a href="https://twitter.com/intent/tweet?screen_name=quirememes" target="blank" title="@quirememes">Twitter</a>\n        </div>\n      </div>\n\
+            </section>\n\
+        </div>\n  <div id="footnote">\n    <div id="copyright">Some material copyright to <a href="https://www.powerlanguage.co.uk/wordle/">WORDLE</a> 2021-2022.</div>\n    <div>\n      <div id="puzzle-number"></div>\n      <div id="hash"></div>\n    </div>\n  </div>\n';
     var _a=function(e){
         r(t,e);
         var a=h(t);
