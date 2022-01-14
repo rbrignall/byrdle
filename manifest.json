@@ -1,0 +1,21 @@
+{
+  "short_name": "Byrdle",
+  "name": "Byrdle",
+  "icons": [
+    {
+      "src": "/byrdle/index_files/byrdle_logo_32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/byrdle/index_files/byrdle_logo_192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+  ],
+  "start_url": "https://rbrignall.github.io/byrdle/",
+  "background_color": "#6aaa64",
+  "display": "standalone",
+  "theme_color": "#6aaa64",
+  "description": "A choral-themed parody of Wordle"
+}
