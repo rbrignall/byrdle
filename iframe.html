@@ -20,6 +20,7 @@
       //var stats = window.localStorage.getItem('statistics');
       var stats = window.localStorage.getItem('statistics');
       //win.postMessage(stats, "*");
+      parent.postMessage(stats, "*");
       document.getElementById("statbox").innerHTML = stats;
      };
     
