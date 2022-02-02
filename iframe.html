@@ -16,10 +16,11 @@
 <body>
     <script>
      window.onload = function() {
-      var win = document.getElementById('iFrameId').contentWindow;
+      //var win = document.getElementById('iFrameId').contentWindow;
+      //var stats = window.localStorage.getItem('statistics');
       var stats = window.localStorage.getItem('statistics');
-      win.postMessage(stats, "*");
-      win.document.getElementById("statbox").innerHTML = stats;
+      //win.postMessage(stats, "*");
+      document.getElementById("statbox").innerHTML = stats;
      };
     
     </script>
