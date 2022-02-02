@@ -17,11 +17,14 @@
     <script>
      window.onload = function() {
       var win = document.getElementById('iFrameId').contentWindow;
-      var stats JSON.parse(window.localStorage.getItem(statistics))
+      var stats JSON.parse(window.localStorage.getItem('statistics'))
       win.postMessage(JSON.stringify({
           key: 'statistics',
           data: stats,
       }), "*");
+      win.document.getElementById("statbox").innerHTML = stats;
      };
+    
     </script>
+    <div id="statbox"></div>
 </body></html>
