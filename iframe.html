@@ -16,14 +16,11 @@
 <body>
     <script>
      window.onload = function() {
-      //var win = document.getElementById('iFrameId').contentWindow;
-      //var stats = window.localStorage.getItem('statistics');
       var stats = window.localStorage.getItem('statistics');
-      //win.postMessage(stats, "*");
       parent.postMessage(stats, "https://www.byrdle.net/");
-      document.getElementById("statbox").innerHTML = stats;
+//      document.getElementById("statbox").innerHTML = stats;
      };
     
     </script>
-    <div id="statbox"></div>
+<!--    <div id="statbox"></div>-->
 </body></html>
