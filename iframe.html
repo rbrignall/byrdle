@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        height: 0%;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+        /* Prevent scrollbar appearing on page transition */
+        overflow-y: hidden;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+<body>
+    <script>
+     window.onload = function() {
+      var win = document.getElementById('iFrameId').contentWindow;
+      var stats JSON.parse(window.localStorage.getItem(statistics))
+      win.postMessage(JSON.stringify({
+          key: 'statistics',
+          data: stats,
+      }), "*");
+     };
+    </script>
+</body></html>
