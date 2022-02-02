@@ -17,11 +17,8 @@
     <script>
      window.onload = function() {
       var win = document.getElementById('iFrameId').contentWindow;
-      var stats JSON.parse(window.localStorage.getItem('statistics'))
-      win.postMessage(JSON.stringify({
-          key: 'statistics',
-          data: stats,
-      }), "*");
+      var stats = window.localStorage.getItem('statistics');
+      win.postMessage(stats, "*");
       win.document.getElementById("statbox").innerHTML = stats;
      };
     
