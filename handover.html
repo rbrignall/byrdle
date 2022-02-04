@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      body {
+        height: 0%;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+        /* Prevent scrollbar appearing on page transition */
+        overflow-y: hidden;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+<body>
+    <script>
+    encodeDataToURL = (data) => {
+        return Object
+        .keys(data)
+        .map(value => `${value}=${encodeURIComponent(data[value])}`)
+        .join('&');
+    }
+    window.onload = function() {
+        var stats = JSON.parse(window.localStorage.getItem('statistics'));
+        var searchParams = new URLSearchParams();
+        searchParams.append("p",stats.gamesPlayed);
+        searchParams.append("cs",stats.currentStreak);
+        searchParams.append("ms",stats.maxStreak);
+        searchParams.append("g1",stats.guesses[1]);
+        searchParams.append("g2",stats.guesses[2]);
+        searchParams.append("g3",stats.guesses[3]);
+        searchParams.append("g4",stats.guesses[4]);
+        searchParams.append("g5",stats.guesses[5]);
+        searchParams.append("g6",stats.guesses[6]);
+        searchParams.append("f",stats.guesses["fail"]);
+        //var urlString = 'http://0.0.0.0:8080?' + searchParams.toString();
+        var urlString = 'https://www.byrdle.net?' + searchParams.toString();
+        document.getElementById("statbox").innerHTML = '<a href="' + urlString + '">https://www.byrdle.net</a>';
+        for(var pair of searchParams.entries()) {
+            console.log(pair[0]+ ', '+ pair[1]);
+        }
+        
+    };
+    
+    </script>
+    The following link will take you, and your game statistics, to the new site! <span id="statbox"></span>
+</body></html>
