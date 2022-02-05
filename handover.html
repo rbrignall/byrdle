@@ -2,19 +2,88 @@
 <html lang="en">
   <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Uncial+Antiqua' rel='stylesheet' />
+
     <style>
-      body {
-        height: 0%;
-        background-color: #ffffff;
-        margin: 0;
-        padding: 0;
-        /* Prevent scrollbar appearing on page transition */
-        overflow-y: hidden;
-        overflow-x: hidden;
-      }
+        :root {
+	       font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+	       font-size: 16px;
+        }
+        body {
+            height: 0%;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            /* Prevent scrollbar appearing on page transition */
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-family: "Uncial Antiqua", "Helvetica Neue", Arial, sans-serif;
+            font-size: 36px; 
+            text-transform: uppercase;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0px auto;
+        }
+        .stat {
+            font-size: 36px;
+            margin: 0px;
+            padding: 0px;
+        }
+        .text {
+            font-size: 14px;
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+        .statholder {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 8px;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+        }
+        .importstats {
+            text-transform: uppercase;
+            color: white;
+		    font-weight: bold;
+		    background: #3a9934;
+            border-radius: 4px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 5px 10px;
+            cursor: pointer;
+        }
+        .importstats a:link, a:visited {
+            color: white;
+            text-decoration: none;            
+        }
+        svg {
+            cursor: pointer;
+            width: 24px;
+            margin: 0 4px;
+            :global(path) {
+			     fill: white;
+            }
+	   }
     </style>
-  </head>
-<body>
+
     <script>
     encodeDataToURL = (data) => {
         return Object
@@ -22,6 +91,31 @@
         .map(value => `${value}=${encodeURIComponent(data[value])}`)
         .join('&');
     }
+    
+    var seconds = 5; // seconds for HTML
+    var foo; // variable for clearInterval() function
+    //var urlString = "http://0.0.0.0:8080";
+    var urlString = 'https://www.byrdle.net';
+        
+    function redirect() {
+        document.location.href = urlString;
+    }
+
+    function updateSecs() {
+        document.getElementById("seconds").innerHTML = seconds;
+        seconds--;
+        if (seconds == -1) {
+            clearInterval(foo);
+            redirect();
+        }
+    }
+
+    function countdownTimer() {
+        foo = setInterval(function () {
+            updateSecs()
+        }, 1000);
+    }
+    
     window.onload = function() {
         var stats = JSON.parse(window.localStorage.getItem('statistics'));
         var searchParams = new URLSearchParams();
@@ -35,15 +129,83 @@
         searchParams.append("g5",stats.guesses[5]);
         searchParams.append("g6",stats.guesses[6]);
         searchParams.append("f",stats.guesses["fail"]);
-        //var urlString = 'http://0.0.0.0:8080?' + searchParams.toString();
-        var urlString = 'https://www.byrdle.net?' + searchParams.toString();
-        document.getElementById("statbox").innerHTML = '<a href="' + urlString + '">https://www.byrdle.net</a>';
-        for(var pair of searchParams.entries()) {
-            console.log(pair[0]+ ', '+ pair[1]);
-        }
         
+        document.getElementById("played").innerHTML = stats.gamesPlayed;
+        document.getElementById("win").innerHTML = stats.winPercentage;
+        document.getElementById("str").innerHTML = stats.currentStreak;
+        document.getElementById("mstr").innerHTML = stats.maxStreak;
+        document.getElementById("g1").innerHTML = stats.guesses[1];
+        document.getElementById("g2").innerHTML = stats.guesses[2];
+        document.getElementById("g3").innerHTML = stats.guesses[3];
+        document.getElementById("g4").innerHTML = stats.guesses[4];
+        document.getElementById("g5").innerHTML = stats.guesses[5];
+        document.getElementById("g6").innerHTML = stats.guesses[6];
+        
+        urlString = urlString + '?' + searchParams.toString();
+        document.getElementById("statbox").innerHTML = '<a href="' + urlString + '">Import these statistics</a>';
+        countdownTimer();
+
     };
-    
     </script>
-    The following link will take you, and your game statistics, to the new site! <span id="statbox"></span>
+  </head>
+<body>
+<div class="container">
+    <h1>byrdle</h1>
+
+    <p>The following statistics will be automatically imported in <span id="seconds">5</span> seconds:</p>
+    <div class="statholder">
+    <section>
+        <div class="stat" id="played"></div>
+        <div class="text">Played</div>
+    </section>
+    <section>
+        <div class="stat" id="win"></div>
+        <div class="text">Win %</div>
+    </section>
+    <section>
+        <div class="stat" id="str"></div>
+        <div class="text">Streak</div>
+    </section>
+    <section>
+        <div class="stat" id="mstr"></div>
+        <div class="text">Max Streak</div>
+    </section>
+    </div>
+    <h3>Guess distribution</h3>
+    <div class="statholder">
+    <section>
+        <div class="stat" id="g1"></div>
+        <div class="text">1<br /> guess</div>
+    </section>
+    <section>
+        <div class="stat" id="g2"></div>
+        <div class="text">2 guesses</div>
+    </section>
+    <section>
+        <div class="stat" id="g3"></div>
+        <div class="text">3 guesses</div>
+    </section>
+    <section>
+        <div class="stat" id="g4"></div>
+        <div class="text">4 guesses</div>
+    </section>
+    <section>
+        <div class="stat" id="g5"></div>
+        <div class="text">5 guesses</div>
+    </section>
+    <section>
+        <div class="stat" id="g6"></div>
+        <div class="text">6 guesses</div>
+    </section>
+    
+    </div>
+    <p>If you are not redirected, the following link will import your statistics:</p> 
+    <div class="importstats">        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path fill="#ffffff" d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z" />
+        </svg>
+        <span id="statbox"></span>
+    </div>
+    
+</div>
 </body></html>
