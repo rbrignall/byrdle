@@ -128,6 +128,7 @@
         
     window.onload = function() {
         var stats = JSON.parse(window.localStorage.getItem('statistics')) || getDefaultStats();
+        var gameState = JSON.parse(window.localStorage.getItem("gameState")) || {lastCompletedTs: null};
         var searchParams = new URLSearchParams();
         searchParams.append("p",stats.gamesPlayed);
         searchParams.append("cs",stats.currentStreak);
@@ -139,6 +140,7 @@
         searchParams.append("g5",stats.guesses[5]);
         searchParams.append("g6",stats.guesses[6]);
         searchParams.append("f",stats.guesses["fail"]);
+        searchParams.append("l",gameState.lastCompletedTs*100);
         
         document.getElementById("played").innerHTML = stats.gamesPlayed;
         document.getElementById("win").innerHTML = stats.winPercentage;
