@@ -140,7 +140,7 @@
         searchParams.append("g5",stats.guesses[5]);
         searchParams.append("g6",stats.guesses[6]);
         searchParams.append("f",stats.guesses["fail"]);
-        searchParams.append("l",gameState.lastCompletedTs*100);
+        searchParams.append("l",gameState.lastCompletedTs);
         
         document.getElementById("played").innerHTML = stats.gamesPlayed;
         document.getElementById("win").innerHTML = stats.winPercentage;
