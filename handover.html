@@ -116,8 +116,18 @@
         }, 1000);
     }
     
+    function getDefaultStats() {
+        return {
+            gamesPlayed: 0,
+            currentStreak: 0,
+            maxStreak: 0,
+            winPercentage: "-",
+            guesses: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, "fail": 0},
+        }
+    }
+        
     window.onload = function() {
-        var stats = JSON.parse(window.localStorage.getItem('statistics'));
+        var stats = JSON.parse(window.localStorage.getItem('statistics')) || getDefaultStats();
         var searchParams = new URLSearchParams();
         searchParams.append("p",stats.gamesPlayed);
         searchParams.append("cs",stats.currentStreak);
